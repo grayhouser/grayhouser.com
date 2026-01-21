@@ -35,6 +35,55 @@
             padding: 0 24px;
         }
 
+        /* Scrolling Descriptors */
+        .scroll-track {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            overflow: hidden;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .scroll-track.left {
+            left: 0;
+        }
+
+        .scroll-track.right {
+            right: 0;
+        }
+
+        .scroll-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 20px 0;
+            will-change: transform;
+        }
+
+        .scroll-word {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 0.75rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            white-space: nowrap;
+            color: var(--black);
+            opacity: 0.15;
+            transition: opacity 0.3s;
+        }
+
+        .scroll-track.right .scroll-word {
+            transform: rotate(180deg);
+        }
+
+        .scroll-word.red {
+            color: var(--red);
+            opacity: 0.25;
+        }
+
         /* Header */
         header {
             padding: 24px 0;
@@ -55,6 +104,8 @@
         .decoration {
             position: absolute;
             pointer-events: none;
+            transition: transform 0.1s ease-out;
+            will-change: transform;
         }
 
         .circle {
@@ -99,7 +150,6 @@
             height: 80px;
             top: 40px;
             right: 10%;
-            transform: rotate(15deg);
         }
 
         .hero .filled-dot-1 {
@@ -114,6 +164,21 @@
             height: 16px;
             top: 20%;
             right: 20%;
+        }
+
+        .hero .filled-dot-3 {
+            width: 20px;
+            height: 20px;
+            top: 60%;
+            right: 12%;
+        }
+
+        .hero .square-2 {
+            width: 40px;
+            height: 40px;
+            bottom: 15%;
+            left: 15%;
+            border-color: var(--red);
         }
 
         .hero h1 {
@@ -182,13 +247,28 @@
             border-color: rgba(224, 11, 0, 0.3);
         }
 
-        .signup-section .square-2 {
+        .signup-section .square-3 {
             width: 100px;
             height: 100px;
             top: 10%;
             right: 5%;
             border-color: rgba(255, 255, 255, 0.2);
-            transform: rotate(-10deg);
+        }
+
+        .signup-section .filled-dot-4 {
+            width: 30px;
+            height: 30px;
+            top: 20%;
+            left: 8%;
+            background: rgba(224, 11, 0, 0.4);
+        }
+
+        .signup-section .circle-4 {
+            width: 80px;
+            height: 80px;
+            bottom: 30%;
+            right: 3%;
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
         .signup-section h2 {
@@ -309,6 +389,12 @@
         }
 
         /* Responsive */
+        @media (max-width: 768px) {
+            .scroll-track {
+                display: none;
+            }
+        }
+
         @media (max-width: 600px) {
             .hero {
                 padding: 64px 0;
@@ -331,11 +417,14 @@
             }
 
             .hero .square-1,
-            .hero .circle-2 {
+            .hero .circle-2,
+            .hero .square-2,
+            .hero .filled-dot-3 {
                 display: none;
             }
 
-            .signup-section .square-2 {
+            .signup-section .square-3,
+            .signup-section .circle-4 {
                 display: none;
             }
 
@@ -347,6 +436,68 @@
     </style>
 </head>
 <body>
+    <!-- Scrolling Descriptors - Left -->
+    <div class="scroll-track left">
+        <div class="scroll-content" id="scroll-left">
+            <span class="scroll-word">Writer</span>
+            <span class="scroll-word red">Churro Lover</span>
+            <span class="scroll-word">Policy Wonk</span>
+            <span class="scroll-word red">Disney Nerd</span>
+            <span class="scroll-word">Journalist</span>
+            <span class="scroll-word red">Coaster Enthusiast</span>
+            <span class="scroll-word">Storyteller</span>
+            <span class="scroll-word red">Dole Whip Connoisseur</span>
+            <span class="scroll-word">Analyst</span>
+            <span class="scroll-word red">Queue Line Expert</span>
+            <span class="scroll-word">News Junkie</span>
+            <span class="scroll-word red">Monorail Fan</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="scroll-word">Writer</span>
+            <span class="scroll-word red">Churro Lover</span>
+            <span class="scroll-word">Policy Wonk</span>
+            <span class="scroll-word red">Disney Nerd</span>
+            <span class="scroll-word">Journalist</span>
+            <span class="scroll-word red">Coaster Enthusiast</span>
+            <span class="scroll-word">Storyteller</span>
+            <span class="scroll-word red">Dole Whip Connoisseur</span>
+            <span class="scroll-word">Analyst</span>
+            <span class="scroll-word red">Queue Line Expert</span>
+            <span class="scroll-word">News Junkie</span>
+            <span class="scroll-word red">Monorail Fan</span>
+        </div>
+    </div>
+
+    <!-- Scrolling Descriptors - Right -->
+    <div class="scroll-track right">
+        <div class="scroll-content" id="scroll-right">
+            <span class="scroll-word red">Theme Park Enthusiast</span>
+            <span class="scroll-word">Industry Watcher</span>
+            <span class="scroll-word red">FastPass Strategist</span>
+            <span class="scroll-word">Editor</span>
+            <span class="scroll-word red">Snack Reviewer</span>
+            <span class="scroll-word">Media Critic</span>
+            <span class="scroll-word red">Annual Passholder</span>
+            <span class="scroll-word">Researcher</span>
+            <span class="scroll-word red">Imagineering Appreciator</span>
+            <span class="scroll-word">Commentator</span>
+            <span class="scroll-word red">Fireworks Devotee</span>
+            <span class="scroll-word">Observer</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="scroll-word red">Theme Park Enthusiast</span>
+            <span class="scroll-word">Industry Watcher</span>
+            <span class="scroll-word red">FastPass Strategist</span>
+            <span class="scroll-word">Editor</span>
+            <span class="scroll-word red">Snack Reviewer</span>
+            <span class="scroll-word">Media Critic</span>
+            <span class="scroll-word red">Annual Passholder</span>
+            <span class="scroll-word">Researcher</span>
+            <span class="scroll-word red">Imagineering Appreciator</span>
+            <span class="scroll-word">Commentator</span>
+            <span class="scroll-word red">Fireworks Devotee</span>
+            <span class="scroll-word">Observer</span>
+        </div>
+    </div>
+
     <header>
         <div class="container">
             <div class="logo">Gray Houser</div>
@@ -354,11 +505,13 @@
     </header>
 
     <section class="hero">
-        <div class="decoration circle circle-1"></div>
-        <div class="decoration circle circle-2"></div>
-        <div class="decoration square square-1"></div>
-        <div class="decoration filled-circle filled-dot-1"></div>
-        <div class="decoration filled-circle filled-dot-2"></div>
+        <div class="decoration circle circle-1" data-speed="0.03" data-rotation="0"></div>
+        <div class="decoration circle circle-2" data-speed="0.05" data-rotation="0"></div>
+        <div class="decoration square square-1" data-speed="0.04" data-rotation="15"></div>
+        <div class="decoration square square-2" data-speed="0.06" data-rotation="-10"></div>
+        <div class="decoration filled-circle filled-dot-1" data-speed="0.08" data-rotation="0"></div>
+        <div class="decoration filled-circle filled-dot-2" data-speed="0.07" data-rotation="0"></div>
+        <div class="decoration filled-circle filled-dot-3" data-speed="0.05" data-rotation="0"></div>
         <div class="container">
             <h1>Writer.<span class="accent">Theme Park Enthusiast.</span></h1>
             <p>I cover Disney, theme parks, and entertainment. Join thousands of readers getting the news that matters.</p>
@@ -372,8 +525,10 @@
     </div>
 
     <section class="signup-section">
-        <div class="decoration circle circle-3"></div>
-        <div class="decoration square square-2"></div>
+        <div class="decoration circle circle-3" data-speed="0.02" data-rotation="0"></div>
+        <div class="decoration square square-3" data-speed="0.04" data-rotation="-10"></div>
+        <div class="decoration filled-circle filled-dot-4" data-speed="0.06" data-rotation="0"></div>
+        <div class="decoration circle circle-4" data-speed="0.05" data-rotation="0"></div>
         <div class="container">
             <div class="badge">
                 <span class="badge-dot"></span>
@@ -398,5 +553,102 @@
             <p>&copy; 2025 Gray Houser</p>
         </div>
     </footer>
+
+    <script>
+        // Physics for decorative elements
+        const decorations = document.querySelectorAll('.decoration');
+
+        // Store physics state for each decoration
+        const physicsState = new Map();
+
+        decorations.forEach(el => {
+            physicsState.set(el, {
+                x: 0,
+                y: 0,
+                vx: 0,
+                vy: 0,
+                targetX: 0,
+                targetY: 0,
+                baseRotation: parseFloat(el.dataset.rotation) || 0,
+                rotation: parseFloat(el.dataset.rotation) || 0,
+                vr: 0
+            });
+        });
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function updatePhysics() {
+            decorations.forEach(el => {
+                const state = physicsState.get(el);
+                const speed = parseFloat(el.dataset.speed) || 0.05;
+                const rect = el.getBoundingClientRect();
+                const elCenterX = rect.left + rect.width / 2;
+                const elCenterY = rect.top + rect.height / 2;
+
+                // Calculate distance from mouse to element
+                const dx = mouseX - elCenterX;
+                const dy = mouseY - elCenterY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                // Push away from mouse when close
+                const maxDistance = 300;
+                if (distance < maxDistance) {
+                    const force = (1 - distance / maxDistance) * 50 * speed;
+                    state.targetX = -dx / distance * force;
+                    state.targetY = -dy / distance * force;
+                    state.rotation = state.baseRotation + (dx * 0.05);
+                } else {
+                    state.targetX = 0;
+                    state.targetY = 0;
+                    state.rotation = state.baseRotation;
+                }
+
+                // Spring physics
+                const springStrength = 0.08;
+                const damping = 0.85;
+
+                state.vx += (state.targetX - state.x) * springStrength;
+                state.vy += (state.targetY - state.y) * springStrength;
+                state.vr += (state.rotation - state.baseRotation) * springStrength * 0.5;
+
+                state.vx *= damping;
+                state.vy *= damping;
+                state.vr *= damping;
+
+                state.x += state.vx;
+                state.y += state.vy;
+
+                const currentRotation = state.baseRotation + state.vr;
+
+                el.style.transform = `translate(${state.x}px, ${state.y}px) rotate(${currentRotation}deg)`;
+            });
+
+            requestAnimationFrame(updatePhysics);
+        }
+
+        updatePhysics();
+
+        // Scroll-based descriptor movement
+        const scrollLeft = document.getElementById('scroll-left');
+        const scrollRight = document.getElementById('scroll-right');
+
+        function updateScrollPosition() {
+            const scrollY = window.scrollY;
+            const speed = 0.5;
+
+            // Move left track down, right track up (creates nice contrast)
+            scrollLeft.style.transform = `translateY(${scrollY * speed}px)`;
+            scrollRight.style.transform = `translateY(${-scrollY * speed}px)`;
+        }
+
+        window.addEventListener('scroll', updateScrollPosition);
+        updateScrollPosition();
+    </script>
 </body>
 </html>
