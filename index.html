@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gray Houser</title>
+  <meta name="description" content="Gray Houser — Writer and founder of Monorail News. Unparalleled Disney, theme park, and entertainment news and analysis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --red: #e00b00;
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray: #888;
+    }
+
+    html {
+      font-size: 18px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 3px solid var(--red);
+    }
+
+    .nav-logo {
+      font-weight: 900;
+      font-size: 1.4rem;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    /* ---- HERO ---- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+    }
+
+    .hero-name {
+      font-size: clamp(3.5rem, 12vw, 10rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name .accent {
+      color: var(--red);
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-weight: 400;
+      color: var(--gray);
+      max-width: 600px;
+      line-height: 1.5;
+      margin-bottom: 3rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--red);
+      color: var(--white);
+      font-weight: 900;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      border: 4px solid var(--red);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .hero-cta:hover {
+      background: transparent;
+      color: var(--red);
+    }
+
+    .scroll-indicator {
+      margin-top: 4rem;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--gray);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* ---- DIVIDER ---- */
+    .divider {
+      width: 100%;
+      height: 6px;
+      background: var(--red);
+    }
+
+    /* ---- ABOUT ---- */
+    .about {
+      padding: 6rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-weight: 900;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+    }
+
+    .about h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .about p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ---- SIGNUP SECTION ---- */
+    .signup {
+      padding: 6rem 2rem;
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .signup-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .signup .section-label {
+      color: var(--red);
+    }
+
+    .signup h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      color: var(--black);
+    }
+
+    .signup p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 2.5rem;
+    }
+
+    .signup-embed {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 4px solid var(--red);
+    }
+
+    footer p {
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray);
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 600px) {
+      nav {
+        padding: 1rem 1.25rem;
+      }
+
+      .nav-links {
+        gap: 1.25rem;
+      }
+
+      .nav-links a {
+        font-size: 0.75rem;
+      }
+
+      .hero {
+        padding: 7rem 1.25rem 3rem;
+      }
+
+      .about {
+        padding: 4rem 1.25rem;
+      }
+
+      .signup {
+        padding: 4rem 1.25rem;
+      }
+
+      .hero-cta {
+        padding: 0.85rem 2rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Gray Houser</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1 class="hero-name">Gray<br><span class="accent">Houser</span></h1>
+    <p class="hero-tagline">Writer and founder of Monorail News. Unparalleled Disney, theme park, and entertainment news and analysis.</p>
+    <a href="#subscribe" class="hero-cta">Subscribe to Monorail News</a>
+    <div class="scroll-indicator">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="about" id="about">
+    <p class="section-label">About</p>
+    <h2>News with no fluff.</h2>
+    <p>I'm Gray Houser. I cover Disney parks, theme park industry developments, and entertainment news through Monorail News — delivering sharp, original reporting that cuts through the noise.</p>
+    <p>If you care about what's actually happening in the theme park world, subscribe below.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="signup" id="subscribe">
+    <div class="signup-inner">
+      <p class="section-label">Newsletter</p>
+      <h2>Stay in the loop.</h2>
+      <p>Get the latest Disney and theme park news delivered straight to your inbox. No spam, no filler — just the stories that matter.</p>
+      <div class="signup-embed">
+        <div style="height: 40vmin;min-height: 360px"><script src="https://cdn.jsdelivr.net/ghost/signup-form@~0.3/umd/signup-form.min.js" data-label-1="grayhouser" data-background-color="#ffffff" data-text-color="#000000" data-button-color="#e00b00" data-button-text-color="#FFFFFF" data-title="Monorail News" data-description="Unparalleled Disney, theme park, and entertainment news and analysis." data-icon="https://monorailnews.com/content/images/size/w192h192/size/w256h256/2025/10/MN_Portrait_Red.jpg.webp" data-site="https://monorailnews.com/" data-locale="en" async></script></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Gray Houser</p>
+  </footer>
+
+</body>
+</html>
